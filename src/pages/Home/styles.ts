@@ -52,8 +52,8 @@ export const SectionCoffees = styled.div`
 `
 
 export const TitleSection = styled.p`
-    font-family: "Baloo 2";
-    font-size: 32px;
-    font-weight: 800;
-    line-height: 1.3;
+  font-family: "Baloo 2";
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1.3;
 `

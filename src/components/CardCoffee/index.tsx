@@ -1,15 +1,21 @@
-import { Minus, Plus, ShoppingCart } from "phosphor-react";
+import { ShoppingCart } from "phosphor-react";
 import { ICoffee } from "../CoffeeProducts";
-import { BaseButton, ButtonBuy, ButtonsContainer, BuyContent, CardContainer, CategoryWords, CoffeeDescription, ContainerWords, ContentCoffee, LessOrMoreContent, NameCoffee, PriceContent } from "./styles";
+import { ButtonBuy, ButtonsContainer, BuyContent, CardContainer, CategoryWords, CoffeeDescription, ContainerWords, ContentCoffee, NameCoffee, PriceContent } from "./styles";
+
+interface ICardCoffee extends ICoffee {
+  onAddProduct: (id: number) => void;
+}
 
 export function CardCoffee({
+  id,
+  name,
+  image,
+  amount,
   category,
   description,
-  id,
-  image,
-  name,
+  onAddProduct,
   priceFormatted,
-}: ICoffee) {
+}: ICardCoffee) {
   return (
     <CardContainer>
       <img
@@ -41,20 +47,9 @@ export function CardCoffee({
         />
 
         <ButtonsContainer>
-          <LessOrMoreContent>
-            <BaseButton>
-              <Minus weight="bold" />
-            </BaseButton>
-            
-            1
-
-            <BaseButton>
-              <Plus weight="bold" />
-            </BaseButton>
-          </LessOrMoreContent>
-
-          <ButtonBuy>
+          <ButtonBuy onClick={() => onAddProduct(id)}>
             <ShoppingCart weight="fill" size={18} />
+            {amount}
           </ButtonBuy>
         </ButtonsContainer>
       </BuyContent>

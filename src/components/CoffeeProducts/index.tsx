@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useCoffee } from "../../context/CartContext";
 import { api } from "../../services/api";
 import { formatPrice } from "../../utils/formatPrice";
 import { CardCoffee } from "../CardCoffee";
@@ -11,10 +12,23 @@ export interface ICoffee {
   description: string;
   priceFormatted: string;
   image: string;
+  amount: number;
+}
+
+interface ICoffeeAmount {
+  [key: number]: number;
 }
 
 export function CoffeeProducts() {
   const [coffees, setCoffees] = useState<ICoffee[]>([])
+  const { coffee, addCart, updateCart } = useCoffee()
+
+  const coffeeAmount = coffee.reduce((sum, product) => {
+    const newSumAmount = { ...sum }
+    newSumAmount[product.id] = product.amount
+
+    return newSumAmount
+  }, {} as ICoffeeAmount)
 
   useEffect(() => {
     async function fetchCoffees() {
@@ -30,16 +44,19 @@ export function CoffeeProducts() {
 
     fetchCoffees()
   }, [])
+
   return (
     <GridCoffees>
       {coffees.map(item => (
-        <CardCoffee 
+        <CardCoffee
+          id={item.id}
           key={item.id}
+          name={item.name}
+          image={item.image}
+          onAddProduct={addCart}
           category={item.category}
           description={item.description}
-          id={item.id}
-          image={item.image}
-          name={item.name}
+          amount={coffeeAmount[item.id] || 0}
           priceFormatted={item.priceFormatted}
         />
       ))}

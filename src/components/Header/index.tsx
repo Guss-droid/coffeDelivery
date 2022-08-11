@@ -1,12 +1,14 @@
 import { useNavigate } from "react-router-dom";
+import { useCoffee } from "../../context/CartContext";
 
 import logoSvg from "../../assets/logo.svg";
 import { MapPin, ShoppingCart } from "phosphor-react";
-import { ButtonGoToCart, HeaderContainer, IconsContainer, ShowLocal } from "./styles";
+import { ButtonGoToCart, HeaderContainer, IconsContainer, LengthCart, ShowLocal } from "./styles";
 
 export function Header() {
 
   const history = useNavigate()
+  const { coffee } = useCoffee()
 
   return (
     <HeaderContainer>
@@ -27,6 +29,7 @@ export function Header() {
         >
           <ShoppingCart weight="fill" size={22} />
         </ButtonGoToCart>
+        <LengthCart>{coffee.length}</LengthCart>
       </IconsContainer>
     </HeaderContainer>
   )

@@ -91,7 +91,8 @@ export const ButtonBuy = styled.button`
   cursor: pointer;
   transition: 0.6s;
   height: 2.375rem;
-  width: 2.37rem;
+  width: 3rem;
+  gap: 4px;
 
   :hover {
     background: ${props => props.theme["purple-500"]}
@@ -103,31 +104,4 @@ export const ButtonsContainer = styled.div`
   gap: 0.5rem;
   align-items: center;
   margin: 0 0 0 1.5rem;
-`
-
-export const LessOrMoreContent = styled.span`
-  background: ${props => props.theme["base-button"]};
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  height: 2.375rem;
-  padding: 0 8px;
-`
-
-export const BaseButton = styled.button`
-  background: transparent;
-  color: ${props => props.theme["purple-500"]};
-  margin: 0;
-  border: 0;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  transition: 0.6s;
-  cursor: pointer;
-
-  :hover {
-    color: ${props => props.theme["purple-900"]}
-  }
 `

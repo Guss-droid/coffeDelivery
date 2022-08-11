@@ -54,3 +54,17 @@ export const ButtonGoToCart = styled.button`
     opacity: 0.7
   }
 `
+
+export const LengthCart = styled.p`
+  background: ${props => props.theme["yellow-900"]};
+  color: ${props => props.theme["white"]};
+  font-weight: 700;
+  border-radius: 999px;
+  width: 1.25rem;
+  height: 1.25rem;
+  padding: 2px;
+  font-size: 14px;
+  margin: 0 0 2rem -1.5rem;
+  text-align: center;
+  z-index: 3;
+`
